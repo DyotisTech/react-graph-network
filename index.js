@@ -146,6 +146,13 @@ var Graph = function Graph(_ref) {
       var node = svg.selectAll("._graphNode").data(data.nodes);
       var simulation = (0, _d3Force.forceSimulation)(data.nodes)
         .force(
+          "center",
+          (0, _d3Force.forceCenter)(
+            svg._groups[0][0].parentElement.clientWidth / 2,
+            svg._groups[0][0].parentElement.clientHeight / 2,
+          ),
+        )
+        .force(
           "link",
           (0, _d3Force.forceLink)() // This force provides links between nodes
             .id(function (d) {
