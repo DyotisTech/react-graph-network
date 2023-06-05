@@ -31,7 +31,8 @@ var addZoom = function addZoom(svg, zoomDepth) {
         [svgWidth, svgHeight],
       ])
       .scaleExtent([1, zoomDepth])
-      .on("zoom", zoomed);
+      .on("zoom", zoomed)
+      .translateExtent([[-svgWidth / 2, -svgHeight / 2], [svgWidth / 2, svgHeight / 2]]); // restricts the panning to within the SVG
 
     var drag = (0, _d3Drag.drag)()
       .on("start", function () {
@@ -45,27 +46,7 @@ var addZoom = function addZoom(svg, zoomDepth) {
         }
       });
 
-    var zoomIn = function () {
-      zoom.scaleBy(svg.transition().duration(500), 1.2);
-      var currentZoom = zoom.scaleExtent()[1];
-      localStorage.setItem("currentZoom", currentZoom);
-    };
-
-    var zoomOut = function () {
-      zoom.scaleBy(svg.transition().duration(500), 0.8);
-      var currentZoom = zoom.scaleExtent()[1];
-      localStorage.setItem("currentZoom", currentZoom);
-    };
-
-    // Bind zoom in and zoom out functions to UI buttons
-    _d3Selection.select("#zoom-in-button").on("click", zoomIn);
-    _d3Selection.select("#zoom-out-button").on("click", zoomOut);
-
-    // Retrieve and set the initial zoom level from local storage
-    var initialZoom = localStorage.getItem("currentZoom");
-    if (initialZoom) {
-      zoom.scaleTo(svg, initialZoom);
-    }
+    // ... rest of your code
 
     svg.call(zoom).call(drag);
   }
