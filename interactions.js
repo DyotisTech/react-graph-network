@@ -6,20 +6,22 @@ Object.defineProperty(exports, "__esModule", {
 exports.addDrag = exports.addHoverOpacity = exports.addZoom = void 0;
 
 var _d3Drag = require("d3-drag");
-var _d3Selection = require("d3-selection");
-var _d3Zoom = require("d3-zoom");
-var _events = require("./events");
 
+var _d3Selection = require("d3-selection");
+
+var _d3Zoom = require("d3-zoom");
+
+var _events = require("./events");
 var addZoom = function addZoom(svg, zoomDepth) {
   if (zoomDepth) {
-    var svgHeight = svg.node().clientHeight;
-    var svgWidth = svg.node().clientWidth;
+    var svgHeight = svg._groups[0][0].clientHeight;
+    var svgWidth = svg._groups[0][0].clientWidth;
 
-    var zoomed = function zoomed(event) {
+    var zoomed = function zoomed() {
       svg
         .selectAll("._graphZoom")
-        .attr("transform", event.transform);
-      var currentZoom = event.transform.k;
+        .attr("transform", _d3Selection.event.transform);
+      var currentZoom = _d3Selection.event.transform.k;
       localStorage.setItem("currentZoom", currentZoom);
     };
 
@@ -32,14 +34,14 @@ var addZoom = function addZoom(svg, zoomDepth) {
       .on("zoom", zoomed);
 
     var drag = (0, _d3Drag.drag)()
-      .on("start", function (event) {
-        if (event.sourceEvent.type !== "brush") {
-          event.sourceEvent.stopPropagation();
+      .on("start", function () {
+        if (_d3Selection.event.sourceEvent.type !== "brush") {
+          _d3Selection.event.sourceEvent.stopPropagation();
         }
       })
-      .on("drag", function (event) {
-        if (event.sourceEvent.type !== "brush") {
-          svg.attr("transform", event.transform);
+      .on("drag", function () {
+        if (_d3Selection.event.sourceEvent.type !== "brush") {
+          svg.attr("transform", _d3Selection.event.transform);
         }
       });
 
@@ -103,18 +105,16 @@ var addDrag = function addDrag(node, simulation, enableDrag, pullIn) {
         .subject(function () {
           return (0, _events.dragsubject)(simulation);
         })
-        .on("start", function (event) {
-          return (0, _events.dragstarted)(simulation, event);
+        .on("start", function () {
+          return (0, _events.dragstarted)(simulation);
         })
-        .on("drag", function (event) {
-          return (0, _events.dragged)(event);
-        })
+        .on("drag", _events.dragged)
         .on(
           "end",
           pullIn
-            ? function (event) {
-              return (0, _events.dragended)(simulation, event);
-            }
+            ? function () {
+                return (0, _events.dragended)(simulation);
+              }
             : null,
         ),
     );
