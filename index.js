@@ -71,7 +71,7 @@ var Graph = function Graph(_ref) {
     // https://github.com/d3/d3-force#simulation_tick
     // add interactions
 
-    // (0, _interactions.addZoom)(svg, zoomDepth);
+    (0, _interactions.addZoom)(svg, zoomDepth);
     (0, _interactions.addHoverOpacity)(node, link, hoverOpacity);
     (0, _interactions.addDrag)(node, simulation, enableDrag, pullIn);
   }, [data, nodeDistance, NodeComponent, LineComponent, pullIn, zoomDepth, enableDrag, hoverOpacity]);
