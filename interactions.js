@@ -12,7 +12,6 @@ var _d3Selection = require("d3-selection");
 var _d3Zoom = require("d3-zoom");
 
 var _events = require("./events");
-
 var addZoom = function addZoom(svg, zoomDepth) {
   if (zoomDepth) {
     var svgHeight = svg._groups[0][0].clientHeight;
