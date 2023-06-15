@@ -68,6 +68,7 @@ const Graph = ({
             id={id}
             width="100vw"
             height="100vh"
+            style={{ position: "fixed", top: 400, left: 400 }}
             {...restProps}
         >
              <g className="_graphZoom">
