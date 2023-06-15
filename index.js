@@ -86,6 +86,7 @@ var Graph = function Graph(_ref) {
     height: "100%",
     border: "1px solid black",
     // viewBox: "-400 -400 800 800"
+    viewBox: "0 0 100 100"
   }, restProps), _react["default"].createElement("g", {
     className: "_graphZoom"
   }, data.links.map(function (link, i) {

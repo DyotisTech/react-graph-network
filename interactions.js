@@ -64,8 +64,6 @@ var _events = require("./events");
 // exports.addZoom = addZoom;
 
 var addZoom = function addZoom(svg, zoomDepth) {
-  console.log(svg._groups[0][0].clientHeight);
-  console.log(svg._groups[0][0].clientWidth);
   if (zoomDepth) {
     var svgHeight = svg._groups[0][0].clientHeight;
     var svgWidth = svg._groups[0][0].clientWidth;
