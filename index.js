@@ -82,11 +82,10 @@ var Graph = function Graph(_ref) {
   // .force("center", (0, _d3Force.forceCenter)(svg._groups[0][0].parentElement.clientWidth / 2, svg._groups[0][0].parentElement.clientHeight / 2)) // This force attracts nodes to the center of the svg area
   return _react["default"].createElement("svg", _extends({
     id: id,
-    width: "100%",
-    height: "100%",
+    width: "100vw",
+    height: "100vh",
     border: "1px solid black",
     // viewBox: "-400 -400 800 800"
-    viewBox: "0 0 100 100"
   }, restProps), _react["default"].createElement("g", {
     className: "_graphZoom"
   }, data.links.map(function (link, i) {
