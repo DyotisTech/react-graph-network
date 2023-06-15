@@ -23,18 +23,14 @@ var addZoom = function addZoom(svg, zoomDepth) {
       var transform = _d3Selection.event.transform;
       var scale = transform.k; // Get the scaling factor
 
-      // Calculate the translate coordinates of the center
-      var translateX = centerX * (1 - scale);
-      var translateY = centerY * (1 - scale);
-
-      // Apply scaling and translation separately
+      // Apply scaling only
       svg.selectAll("._graphZoom")
-        .attr("transform", "translate(" + translateX + "," + translateY + ") scale(" + scale + ")");
+        .attr("transform", "translate(" + centerX + "," + centerY + ") scale(" + scale + ")");
     };
 
     var zoom = _d3Zoom.zoom()
       .extent([
-        [svgWidth / 2, svgHeight / 2],
+        [0, 0],
         [svgWidth, svgHeight],
       ])
       .scaleExtent([1, zoomDepth])
