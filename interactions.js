@@ -34,7 +34,7 @@ var addZoom = function addZoom(svg, zoomDepth) {
 
     var zoom = _d3Zoom.zoom()
       .extent([
-        [0, 0],
+        [svgWidth / 2, svgHeight / 2],
         [svgWidth, svgHeight],
       ])
       .scaleExtent([1, zoomDepth])
