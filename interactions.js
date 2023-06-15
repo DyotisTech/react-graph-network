@@ -14,8 +14,8 @@ var _d3Zoom = require("d3-zoom");
 var _events = require("./events");
 var addZoom = function addZoom(svg, zoomDepth) {
   if (zoomDepth) {
-    var svgHeight = 0;
-    var svgWidth = 0;
+    var svgHeight = 200;
+    var svgWidth = 200;
     var centerX = svgWidth / 2;
     var centerY = svgHeight / 2;
 
