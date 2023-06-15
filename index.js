@@ -71,7 +71,7 @@ var Graph = function Graph(_ref) {
     // https://github.com/d3/d3-force#simulation_tick
     // add interactions
 
-    // (0, _interactions.addZoom)(svg, zoomDepth);
+    (0, _interactions.addZoom)(svg, zoomDepth);
     (0, _interactions.addHoverOpacity)(node, link, hoverOpacity);
     (0, _interactions.addDrag)(node, simulation, enableDrag, pullIn);
   }, [data, nodeDistance, NodeComponent, LineComponent, pullIn, zoomDepth, enableDrag, hoverOpacity]);
@@ -80,15 +80,12 @@ var Graph = function Graph(_ref) {
     return null;
   }
   // .force("center", (0, _d3Force.forceCenter)(svg._groups[0][0].parentElement.clientWidth / 2, svg._groups[0][0].parentElement.clientHeight / 2)) // This force attracts nodes to the center of the svg area
-  console.log(window.x, window.y, window.k);
   return _react["default"].createElement("svg", _extends({
     id: id,
     width: "100%",
     height: "100%",
     border: "1px solid black",
     viewBox: "-400 -400 800 800",
-    ref: window.ref,
-    transform: `translate(${window.x},${window.y}) scale(${window.k})`
   }, restProps), _react["default"].createElement("g", {
     className: "_graphZoom"
   }, data.links.map(function (link, i) {
