@@ -16,19 +16,14 @@ var addZoom = function addZoom(svg, zoomDepth) {
   if (zoomDepth) {
     var svgHeight = svg._groups[0][0].clientHeight;
     var svgWidth = svg._groups[0][0].clientWidth;
-    var centerX = svgWidth / 2;
-    var centerY = svgHeight / 2;
 
-    var zoomed = function () {
-      var transform = _d3Selection.event.transform;
-      var scale = transform.k; // Get the scaling factor
-
-      // Apply scaling only
-      svg.selectAll("._graphZoom")
-        .attr("transform", "translate(" + centerX + "," + centerY + ") scale(" + scale + ")");
+    var zoomed = function zoomed() {
+      svg
+        .selectAll("._graphZoom")
+        .attr("transform", _d3Selection.event.transform);
     };
 
-    var zoom = _d3Zoom.zoom()
+    var zoom = (0, _d3Zoom.zoom)()
       .extent([
         [0, 0],
         [svgWidth, svgHeight],
@@ -36,7 +31,7 @@ var addZoom = function addZoom(svg, zoomDepth) {
       .scaleExtent([1, zoomDepth])
       .on("zoom", zoomed);
 
-    var drag = _d3Drag.drag()
+    var drag = (0, _d3Drag.drag)()
       .on("start", function () {
         if (_d3Selection.event.sourceEvent.type !== "brush") {
           _d3Selection.event.sourceEvent.stopPropagation();
