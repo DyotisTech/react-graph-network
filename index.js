@@ -73,7 +73,7 @@ var Graph = function Graph(_ref) {
 
     (0, _interactions.addZoom)(svg, zoomDepth);
     (0, _interactions.addHoverOpacity)(node, link, hoverOpacity);
-    (0, _interactions.addDrag)(node, simulation, enableDrag, pullIn);
+    // (0, _interactions.addDrag)(node, simulation, enableDrag, pullIn);
   }, [data, nodeDistance, NodeComponent, LineComponent, pullIn, zoomDepth, enableDrag, hoverOpacity]);
 
   if (!data) {
