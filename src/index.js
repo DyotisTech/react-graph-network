@@ -66,8 +66,8 @@ const Graph = ({
     return (
         <svg
             id={id}
-            width="100%"
-            height="100%"
+            width="100vw"
+            height="100vh"
             {...restProps}
         >
              <g className="_graphZoom">
