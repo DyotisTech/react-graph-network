@@ -95,39 +95,39 @@ var addHoverOpacity = function addHoverOpacity(node, link, hoverOpacity) {
 
 exports.addHoverOpacity = addHoverOpacity;
 
-// var addDrag = function addDrag(node, simulation, enableDrag, pullIn) {
-//   if (enableDrag) {
-//     node.call(
-//       (0, _d3Drag.drag)()
-//         .subject(function () {
-//           return (0, _events.dragsubject)(simulation);
-//         })
-//         .on("start", function () {
-//           return (0, _events.dragstarted)(simulation);
-//         })
-//         .on("drag", _events.dragged)
-//         .on(
-//           "end",
-//           pullIn
-//             ? function () {
-//                 return (0, _events.dragended)(simulation);
-//               }
-//             : null,
-//         ),
-//     );
-//   } else {
-//     node.call(
-//       (0, _d3Drag.drag)()
-//         .subject(function () {
-//           return (0, _events.dragsubject)(simulation);
-//         })
-//         .on("start", null)
-//         .on("drag", null)
-//         .on("end", null),
-//     );
-//   }
+var addDrag = function addDrag(node, simulation, enableDrag, pullIn) {
+  if (enableDrag) {
+    node.call(
+      (0, _d3Drag.drag)()
+        .subject(function () {
+          return (0, _events.dragsubject)(simulation);
+        })
+        .on("start", function () {
+          return (0, _events.dragstarted)(simulation);
+        })
+        .on("drag", _events.dragged)
+        .on(
+          "end",
+          pullIn
+            ? function () {
+                return (0, _events.dragended)(simulation);
+              }
+            : null,
+        ),
+    );
+  } else {
+    node.call(
+      (0, _d3Drag.drag)()
+        .subject(function () {
+          return (0, _events.dragsubject)(simulation);
+        })
+        .on("start", null)
+        .on("drag", null)
+        .on("end", null),
+    );
+  }
 
-//   return node;
-// };
+  return node;
+};
 
-// exports.addDrag = addDrag;
+exports.addDrag = addDrag;
